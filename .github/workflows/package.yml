@@ -21,8 +21,8 @@ jobs:
             output_name: od_convert_windows
     
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
+    #permissions:
+     # contents: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
