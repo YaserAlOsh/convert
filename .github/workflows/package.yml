@@ -38,21 +38,21 @@ jobs:
         pyinstaller gui6.spec --distpath ./dist/${{ matrix.output_name }} --workpath ./build/${{ matrix.output_name }}
         pyinstaller gui6_single.spec --distpath ./dist/${{ matrix.output_name }}_exe --workpath ./build/${{ matrix.output_name }}_exe
 
-    #- name: Upload full distribution artifact
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: ${{ matrix.output_name }}_full
-    #    path: dist/${{ matrix.output_name }}/
+    - name: Upload full distribution artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.output_name }}_full
+        path: dist/${{ matrix.output_name }}/
 
-    #- name: Upload single executable artifact
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: ${{ matrix.output_name }}_exe
-    #    path: dist/${{ matrix.output_name }}_exe/
+    - name: Upload single executable artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.output_name }}_exe
+        path: dist/${{ matrix.output_name }}_exe/
     - name: Generate release tag
       id: tag
       run: |
-        echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")"
+        echo "::set-output name=release_tag::Build_$(date +"%Y.%m.%d_%H-%M")"
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
