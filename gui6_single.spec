@@ -22,24 +22,16 @@ pyz = PYZ(a.pure, a.zipped_data,
 
 exe = EXE(pyz,
           a.scripts,
-          [],
-          exclude_binaries=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='Object Detection Dataset Converter',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
+          runtime_tmpdir=None,
           upx=True,
-          console=False,
-          onefile=True )
-
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               upx_exclude=[],
-               name='cv_convert')
+          console=False)
 
 # Adjust the executable extension based on the platform
 if sys.platform.startswith('win'):
