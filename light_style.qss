@@ -1,0 +1,58 @@
+QWidget {
+    background-color: #f2f0e9;
+    color: #333333;
+    font-family: Arial, sans-serif;
+}
+QComboBox, QPushButton, QLabel {
+    font-size: 14px;
+}
+QComboBox, QPushButton {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 5px;
+    border-radius: 3px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox::down-arrow {
+    image: url(down_arrow_light.png);
+    width: 14px;
+    height: 14px;
+}
+QPushButton:hover {
+    background-color: #e6e6e6;
+}
+QLabel#directory-label, QLabel#file-label {
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 3px;
+}
+QLabel#input-drop-area {
+    background-color: #e8f0fe;
+    border: 2px dashed #4285f4;
+    border-radius: 5px;
+}
+QLabel#output-drop-area {
+    background-color: #e6f4ea;
+    border: 2px dashed #34a853;
+    border-radius: 5px;
+}
+QPushButton#convert-button {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+QPushButton#annotate-button {
+    background-color: #b77dde;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+QPushButton#annotate-button:hover {
+    background-color: #874caf;
+}
+QPushButton#convert-button:hover {
+    background-color: #45a049;
+}

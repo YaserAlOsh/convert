@@ -1,0 +1,3 @@
+PASCAL_VOC = "Pascal VOC"
+YOLO = "YOLO"
+COCO = "COCO"
