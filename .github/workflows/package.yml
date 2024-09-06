@@ -49,6 +49,10 @@ jobs:
     #  with:
     #    name: ${{ matrix.output_name }}_exe
     #    path: dist/${{ matrix.output_name }}_exe/
+    - name: Generate release tag
+      id: tag
+      run: |
+        echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")"
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
