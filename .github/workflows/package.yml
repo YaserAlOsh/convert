@@ -52,6 +52,7 @@ jobs:
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{steps.tag.outputs.release_tag}}
         files: |
           dist/${{ matrix.output_name }}_exe/
           dist/${{ matrix.output_name }}/
