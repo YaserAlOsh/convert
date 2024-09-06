@@ -1,0 +1,42 @@
+name: Package Python App for Multiple Platforms
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            output_name: od_convert_linux
+          - os: macos-latest
+            output_name: od_convert_mac
+          - os: windows-latest
+            output_name: od_convert_windows
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    # ... (previous steps remain the same)
+
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller gui.spec --distpath ./dist/${{ matrix.output_name }} --workpath ./build/${{ matrix.output_name }}
+        pyinstaller gui.spec --onefile --distpath ./dist/${{ matrix.output_name }}_exe --workpath ./build/${{ matrix.output_name }}_exe
+
+    - name: Upload full distribution artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.output_name }}_full
+        path: dist/${{ matrix.output_name }}/
+
+    - name: Upload single executable artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.output_name }}_exe
+        path: dist/${{ matrix.output_name }}_exe/
