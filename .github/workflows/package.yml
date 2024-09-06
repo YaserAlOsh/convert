@@ -54,5 +54,5 @@ jobs:
         files: |
           dist/${{ matrix.output_name }}_exe/
           dist/${{ matrix.output_name }}/
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
