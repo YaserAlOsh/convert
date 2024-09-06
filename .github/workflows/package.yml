@@ -33,8 +33,8 @@ jobs:
         pip install -r requirements.txt
     - name: Build with PyInstaller
       run: |
-        pyinstaller gui.spec --distpath ./dist/${{ matrix.output_name }} --workpath ./build/${{ matrix.output_name }}
-        pyinstaller gui.spec --onefile --distpath ./dist/${{ matrix.output_name }}_exe --workpath ./build/${{ matrix.output_name }}_exe
+        pyinstaller gui6.spec --distpath ./dist/${{ matrix.output_name }} --workpath ./build/${{ matrix.output_name }}
+        pyinstaller gui6.spec --onefile --distpath ./dist/${{ matrix.output_name }}_exe --workpath ./build/${{ matrix.output_name }}_exe
 
     - name: Upload full distribution artifact
       uses: actions/upload-artifact@v3
