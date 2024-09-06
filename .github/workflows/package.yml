@@ -49,10 +49,10 @@ jobs:
     #    name: ${{ matrix.output_name }}_exe
     #    path: dist/${{ matrix.output_name }}_exe/
     - name: Release with Notes
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            dist/${{ matrix.output_name }}_exe/
-            dist/${{ matrix.output_name }}/
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/${{ matrix.output_name }}_exe/
+          dist/${{ matrix.output_name }}/
         #env:
          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
