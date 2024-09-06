@@ -49,6 +49,9 @@ jobs:
       with:
         name: ${{ matrix.output_name }}_exe
         path: dist/${{ matrix.output_name }}_exe/
+    - name: Zip full distribution
+      run: |
+        Compress-Archive -Path dist/${{ matrix.output_name }} -DestinationPath ${{ matrix.output_name }}_full.zip
     - name: Generate release tag
       id: tag
       run: |
@@ -58,7 +61,7 @@ jobs:
       with:
         tag_name: ${{steps.tag.outputs.release_tag}}
         files: |
-          dist/${{ matrix.output_name }}_exe/
-          dist/${{ matrix.output_name }}/
+          dist/${{ matrix.output_name }}_exe/*.exe
+          ${{ matrix.output_name }}_full.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
